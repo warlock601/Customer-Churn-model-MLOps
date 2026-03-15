@@ -79,9 +79,19 @@ pip install -r requirements.txt
 # Generate dataset, as we don't have a dataset so we use this to generate a dataset
 python generate_data.py
 
+# Before running train.py, create a directory "models" so that it can save the pkl file as we have mentioned in train.py
 # Train model
 python train.py
+```
 
+We get this when we train.py
+```bash
+Accuracy: 0.6100
+AUC-ROC: 0.6621
+Model saved to models/churn_model.pkl
+```
+
+```bash
 # Test API locally
 python api.py
 # Visit http://localhost:8000/docs
