@@ -40,3 +40,24 @@ Once the model is ready (Model is prepared using Dataset and Algo), ML engineers
 
 </br>
 MLOps engineers then start automating the manual manual activities and also automate the deployment process. MLOps engg will introduce DVC, KServe, Kubernetes, Github-Actions, ArgoCD for the model.
+
+## Project Structure
+
+```
+churn-model/
+├── generate_data.py          # Generate synthetic churn dataset
+├── train.py                   # Train the model
+├── api.py                     # FastAPI inference server
+├── requirements.txt           # Python dependencies
+├── Dockerfile                 # Container image
+├── .dvc/config               # DVC configuration
+├── models/
+│   └── churn_model.pkl.dvc   # DVC metadata for model
+├── k8s/
+│   ├── deployment.yaml       # Kubernetes deployment
+│   └── inference.yaml        # KServe inference service
+├── .github/workflows/
+│   └── mlops-pipeline.yaml   # GitHub Actions CI/CD
+└── argocd/
+    └── application.yaml      # ArgoCD application
+```
