@@ -75,6 +75,7 @@ churn-model/
 # Install dependencies
 pip install -r requirements.txt
 
+# Before running the generate_data script we need to create "data" directory as it will store the csv file inside that
 # Generate dataset, as we don't have a dataset so we use this to generate a dataset
 python generate_data.py
 
