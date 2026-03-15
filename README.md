@@ -75,7 +75,7 @@ churn-model/
 # Install dependencies
 pip install -r requirements.txt
 
-# Generate dataset
+# Generate dataset, as we don't have a dataset so we use this to generate a dataset
 python generate_data.py
 
 # Train model
