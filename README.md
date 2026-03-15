@@ -62,6 +62,11 @@ churn-model/
     └── application.yaml      # ArgoCD application
 ```
 
+## Code Overview
+- generate_data.py: This python script generates a dataset and then stores the datat in a csv file. This is not used in Real-time. In Real-time Data Scientists use a dataset or store the dataset in a csv file.
+- train.py: to train the model.
+- api.py: FastAPI inference server for churn prediction
+
 ## MLOps Pipeline Steps
 
 ### 1. Initial Setup
