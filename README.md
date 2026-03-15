@@ -61,3 +61,75 @@ churn-model/
 └── argocd/
     └── application.yaml      # ArgoCD application
 ```
+
+## MLOps Pipeline Steps
+
+### 1. Initial Setup
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Generate dataset
+python generate_data.py
+
+# Train model
+python train.py
+
+# Test API locally
+python api.py
+# Visit http://localhost:8000/docs
+```
+
+### 2. DVC Setup (Data Version Control)
+
+```bash
+# Initialize DVC
+dvc init
+
+# Configure S3 remote
+dvc remote add -d myremote s3://my-bucket/churn-model
+
+# Track model with DVC
+dvc add models/churn_model.pkl
+
+# Push to S3
+dvc push
+
+# Commit DVC metadata
+git add models/churn_model.pkl.dvc .dvc/ .gitignore
+git commit -m "Track model with DVC"
+```
+
+### 3. Push Model to S3
+
+After training the model and setting up DVC:
+
+```bash
+# Configure AWS credentials (if not already done)
+export AWS_ACCESS_KEY_ID=your-key
+export AWS_SECRET_ACCESS_KEY=your-secret
+export AWS_DEFAULT_REGION=us-east-1
+
+# Create S3 bucket
+aws s3 mb s3://my-bucket
+
+# Push model to S3 using DVC
+dvc push
+
+# Verify model is in S3
+aws s3 ls s3://my-bucket/churn-model/models/ --recursive
+```
+
+The model will be stored in S3 at: `s3://my-bucket/churn-model/models/churn_model.pkl`
+
+### 4. S3 Configuration
+
+**Note:** This section is already covered in Step 3. S3 is used by DVC to store models.
+
+### 5. Kubernetes with KIND
+
+```bash
+# Create KIND cluster
+kind create cluster --name churn-model
+```
