@@ -97,6 +97,25 @@ We cannot directly send a request to the model, so we'll create API for the mode
 python api.py
 # Visit http://localhost:8000/docs
 ```
+We can also access the FastAPI URL provided: http://localhost:8000 and there we can access the UI, in /predict API > Click "Try it out" > Provide the parameters > Execute. </br>
+Filled in these values:
+```bash
+{
+  "age": 70,
+  "tenure_months": 60,
+  "monthly_charges": 30,
+  "total_charges": 1000,
+  "num_support_calls": 1
+}
+```
+And this is the response we got:
+```bash
+{
+  "churn": 0,
+  "churn_probability": 0.26
+}
+```
+
 
 ### 2. DVC Setup (Data Version Control)
 
