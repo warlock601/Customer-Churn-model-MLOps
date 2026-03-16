@@ -90,6 +90,7 @@ Accuracy: 0.6100
 AUC-ROC: 0.6621
 Model saved to models/churn_model.pkl
 ```
+We cannot directly send a request to the model, so we'll create API for the model using api.py. Then we test it using the commands mentioned in API Usage section in a different Terminal.
 
 ```bash
 # Test API locally
@@ -260,6 +261,7 @@ curl -X POST http://localhost:8000/predict \
     "num_support_calls": 3
   }'
 ```
+
 
 Response:
 ```json
